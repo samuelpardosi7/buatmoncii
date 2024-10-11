@@ -1,55 +1,63 @@
-let selectedFood = '';
-let selectedMovie = '';
+document.getElementById("yesButton").addEventListener("click", function() {
+    document.getElementById("container").classList.add("hidden");
+    document.getElementById("happyCat").classList.remove("hidden");
+});
 
-function goToPage2(answer) {
-    if (answer === 'no') {
-        alert("That's okay, maybe another time!");
-        return;
+document.getElementById("noButton").addEventListener("click", function() {
+    alert("Maybe next time!");
+});
+
+document.getElementById("clickMe").addEventListener("click", function() {
+    document.getElementById("happyCat").classList.add("hidden");
+    document.getElementById("dateTime").classList.remove("hidden");
+});
+
+document.getElementById("continueDate").addEventListener("click", function() {
+    document.getElementById("dateTime").classList.add("hidden");
+    document.getElementById("foodChoice").classList.remove("hidden");
+});
+
+let selectedFood = null;
+document.querySelectorAll(".food-image").forEach(function(img) {
+    img.addEventListener("click", function() {
+        selectedFood = img.dataset.value;
+        document.querySelectorAll(".food-image").forEach(function(img) {
+            img.style.opacity = img.dataset.value === selectedFood ? "1" : "0.5";
+        });
+    });
+});
+
+document.getElementById("continueFood").addEventListener("click", function() {
+    if (selectedFood) {
+        document.getElementById("foodChoice").classList.add("hidden");
+        document.getElementById("movieChoice").classList.remove("hidden");
+    } else {
+        alert("Please select a food.");
     }
-    document.getElementById('page1').style.display = 'none';
-    document.getElementById('page2').style.display = 'block';
-}
+});
 
-function goToPage3() {
-    document.getElementById('page2').style.display = 'none';
-    document.getElementById('page3').style.display = 'block';
-}
+let selectedMovie = null;
+document.querySelectorAll(".movie-image").forEach(function(img) {
+    img.addEventListener("click", function() {
+        selectedMovie = img.dataset.value;
+        document.querySelectorAll(".movie-image").forEach(function(img) {
+            img.style.opacity = img.dataset.value === selectedMovie ? "1" : "0.5";
+        });
+    });
+});
 
-function goToPage4() {
-    const date = document.getElementById('dateInput').value;
-    const time = document.getElementById('timeInput').value;
-    if (!date || !time) {
-        alert("Please select a date and time!");
-        return;
+document.getElementById("continueMovie").addEventListener("click", function() {
+    if (selectedMovie) {
+        document.getElementById("movieChoice").classList.add("hidden");
+        document.getElementById("excitement").classList.remove("hidden");
+    } else {
+        alert("Please select a movie.");
     }
-    document.getElementById('page3').style.display = 'none';
-    document.getElementById('page4').style.display = 'block';
-}
+});
 
-function selectFood(food) {
-    selectedFood = food;
-    document.getElementById('page4').style.display = 'none';
-    document.getElementById('page5').style.display = 'block';
-}
-
-function selectMovie(movie) {
-    selectedMovie = movie;
-    document.getElementById('page5').style.display = 'none';
-    document.getElementById('page6').style.display = 'block';
-}
-
-function showSummary() {
-    const date = document.getElementById('dateInput').value;
-    const time = document.getElementById('timeInput').value;
-    const excitementLevel = document.getElementById('excitementLevel').value;
-
-    document.getElementById('summary').innerHTML = `
-        <h2>Summary</h2>
-        <p>Date: ${date}</p>
-        <p>Time: ${time}</p>
-        <p>Favorite Food: ${selectedFood}</p>
-        <p>Favorite Movie: ${selectedMovie}</p>
-        <p>Excitement Level: ${excitementLevel}</p>
-    `;
-    document.getElementById('page6').style.display = 'block';
-}
+document.getElementById("continueExcitement").addEventListener("click", function() {
+    const date = document.getElementById("datePicker").value;
+    document.getElementById("finalDate").textContent = date || "the selected date";
+    document.getElementById("excitement").classList.add("hidden");
+    document.getElementById("finalMessage").classList.remove("hidden");
+});
