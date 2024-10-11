@@ -3,48 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/styles.css">
-    <title>Date Planner</title>
+    <title>Date Out Proposal</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="page1">
+    <div id="page1" class="page">
         <h1>Would you like to go out with me for a date?</h1>
         <button onclick="goToPage2('yes')">Yes</button>
         <button onclick="goToPage2('no')">No</button>
     </div>
 
-    <div id="page2" style="display:none;">
-        <h2>Select Food</h2>
+    <div id="page2" class="page" style="display: none;">
+        <h2>Select your favorite food:</h2>
         <button onclick="selectFood('Pizza')">Pizza</button>
         <button onclick="selectFood('Sushi')">Sushi</button>
+        <button onclick="selectFood('Burger')">Burger</button>
         <button onclick="goToPage3()">Next</button>
     </div>
 
-    <div id="page3" style="display:none;">
-        <h2>Select Date and Time</h2>
+    <div id="page3" class="page" style="display: none;">
+        <h2>Select a date and time:</h2>
+        <label for="dateInput">Date:</label>
         <input type="date" id="dateInput">
+        <label for="timeInput">Time:</label>
         <input type="time" id="timeInput">
         <button onclick="goToPage4()">Next</button>
     </div>
 
-    <div id="page4" style="display:none;">
-        <h2>Select Movie</h2>
-        <button onclick="selectMovie('Movie A')">Movie A</button>
-        <button onclick="selectMovie('Movie B')">Movie B</button>
+    <div id="page4" class="page" style="display: none;">
+        <h2>Select your favorite movie:</h2>
+        <button onclick="selectMovie('Inception')">Inception</button>
+        <button onclick="selectMovie('Titanic')">Titanic</button>
+        <button onclick="selectMovie('Avatar')">Avatar</button>
     </div>
 
-    <div id="page5" style="display:none;">
-        <h2>Excitement Level</h2>
-        <input type="range" id="excitementLevel" min="1" max="10">
+    <div id="page5" class="page" style="display: none;">
+        <h2>Excitement Level:</h2>
+        <input type="range" id="excitementLevel" min="1" max="10" value="5">
         <span id="excitementValue">5</span>
         <button onclick="showSummary()">Show Summary</button>
     </div>
 
-    <div id="page6" style="display:none;">
-        <h2>Summary</h2>
+    <div id="page6" class="page" style="display: none;">
         <div id="summary"></div>
+        <button onclick="location.reload()">Restart</button>
     </div>
 
-    <script src="scripts/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
