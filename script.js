@@ -1,5 +1,8 @@
+let selectedDate = '';
+let selectedTime = '';
 let selectedFood = '';
 let selectedMovie = '';
+let excitementLevel = 50; // Nilai default untuk slider
 
 function showPage(pageId) {
     document.querySelectorAll('.container > div').forEach(div => div.classList.add('hidden'));
@@ -9,7 +12,7 @@ function showPage(pageId) {
     setTimeout(() => newPage.classList.remove('bounce'), 1000);
     
     if (pageId === 'page7') {
-        displayDateTime();
+        displayResults(); // Memanggil fungsi displayResults() saat halaman terakhir
     }
 }
 
@@ -34,43 +37,6 @@ function selectMovie(element, movie) {
     setTimeout(() => element.classList.remove('bounce'), 1000);
 }
 
-function displayDateTime() {
-    const date = document.getElementById('dateInput').value;
-    const time = document.getElementById('timeInput').value;
-    const displayElement = document.getElementById('dateTimeDisplay');
-    displayElement.textContent = `on ${date} at ${time}`;
-    displayElement.classList.add('bounce');
-    setTimeout(() => displayElement.classList.remove('bounce'), 1000);
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const slider = document.getElementById('excitementSlider');
-    if (slider) {
-        slider.addEventListener('input', () => {
-            const value = slider.value;
-            const hue = (value / 100) * 120; // 0 to 120 (red to green)
-            slider.style.background = `hsl(${hue}, 100%, 50%)`;
-        });
-    }
-});
-
-function addFloatingHearts() {
-    const heart = document.createElement('div');
-    heart.innerHTML = '❤️';
-    heart.style.position = 'fixed';
-    heart.style.fontSize = '24px';
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-    heart.style.opacity = Math.random();
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 5000);
-}
-
-setInterval(addFloatingHearts, 300);
-
 function displayResults() {
     const dateTimeDisplay = document.getElementById('dateTimeDisplay');
     dateTimeDisplay.innerHTML = `
@@ -86,3 +52,26 @@ function displayResults() {
         <p><strong>Please screenshot this and send to me! :D</strong></p>
     `;
 }
+
+document.getElementById('dateInput').addEventListener('change', (event) => {
+    selectedDate = event.target.value;
+});
+
+document.getElementById('timeInput').addEventListener('change', (event) => {
+    selectedTime = event.target.value;
+});
+
+document.getElementById('excitementSlider').addEventListener('input', (event) => {
+    excitementLevel = event.target.value;
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('excitementSlider');
+    if (slider) {
+        slider.addEventListener('input', () => {
+            const value = slider.value;
+            const hue = (value / 100) * 120; // 0 to 120 (red to green)
+            slider.style.background = `hsl(${hue}, 100%, 50%)`;
+        });
+    }
+});
