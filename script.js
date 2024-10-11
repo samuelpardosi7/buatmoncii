@@ -6,19 +6,19 @@ let excitementLevel = 50; // Nilai default untuk slider
 
 function showPage(pageId) {
     // Validasi sebelum melanjutkan ke page4
-    if (pageId === 'page4' && !selectedFood) {
+    if (pageId === 'page5' && !selectedFood) {
         alert('Please select a food option before continuing.');
         return;
     }
     
     // Validasi sebelum melanjutkan ke page5
-    if (pageId === 'page5' && !selectedMovie) {
+    if (pageId === 'page6' && !selectedMovie) {
         alert('Please select a movie option before continuing.');
         return;
     }
 
     // Validasi sebelum melanjutkan ke page6
-    if (pageId === 'page6' && (!selectedDate || !selectedTime)) {
+    if (pageId === 'page7' && (!selectedDate || !selectedTime)) {
         alert('Please select a date and time before continuing.');
         return;
     }
