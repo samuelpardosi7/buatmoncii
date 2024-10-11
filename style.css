@@ -1,86 +1,72 @@
-body {
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
-    transition: background-color 0.5s;
+let selectedFood = '';
+let selectedMovie = '';
+
+function showPage(pageId) {
+    document.querySelectorAll('.container > div').forEach(div => div.classList.add('hidden'));
+    const newPage = document.getElementById(pageId);
+    newPage.classList.remove('hidden');
+    newPage.classList.add('bounce');
+    setTimeout(() => newPage.classList.remove('bounce'), 1000);
+    
+    if (pageId === 'page7') {
+        displayDateTime();
+    }
 }
-.container {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 80%;
-    width: 400px;
+
+function showNoAnimation() {
+    document.body.classList.add('shake');
+    setTimeout(() => document.body.classList.remove('shake'), 500);
 }
-h1 {
-    color: #333;
-    margin-bottom: 1rem;
+
+function selectFood(element, food) {
+    document.querySelectorAll('.food-option').forEach(opt => opt.classList.remove('selected'));
+    element.classList.add('selected');
+    selectedFood = food;
+    element.classList.add('bounce');
+    setTimeout(() => element.classList.remove('bounce'), 1000);
 }
-button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+
+function selectMovie(element, movie) {
+    document.querySelectorAll('.movie-option').forEach(opt => opt.classList.remove('selected'));
+    element.classList.add('selected');
+    selectedMovie = movie;
+    element.classList.add('bounce');
+    setTimeout(() => element.classList.remove('bounce'), 1000);
 }
-button:hover {
-    background-color: #45a049;
+
+function displayDateTime() {
+    const date = document.getElementById('dateInput').value;
+    const time = document.getElementById('timeInput').value;
+    const displayElement = document.getElementById('dateTimeDisplay');
+    displayElement.textContent = `on ${date} at ${time}`;
+    displayElement.classList.add('bounce');
+    setTimeout(() => displayElement.classList.remove('bounce'), 1000);
 }
-img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 1rem;
+
+document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('excitementSlider');
+    if (slider) {
+        slider.addEventListener('input', () => {
+            const value = slider.value;
+            const hue = (value / 100) * 120; // 0 to 120 (red to green)
+            slider.style.background = `hsl(${hue}, 100%, 50%)`;
+        });
+    }
+});
+
+function addFloatingHearts() {
+    const heart = document.createElement('div');
+    heart.innerHTML = '❤️';
+    heart.style.position = 'fixed';
+    heart.style.fontSize = '24px';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+    heart.style.opacity = Math.random();
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
 }
-.hidden {
-    display: none;
-}
-input[type="date"], input[type="time"] {
-    margin: 10px 0;
-    padding: 10px;
-    width: 100%;
-    box-sizing: border-box;
-}
-.food-options, .movie-options {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 1rem;
-}
-.food-option, .movie-option {
-    width: 100px;
-    text-align: center;
-    cursor: pointer;
-    padding: 10px;
-    border: 2px solid transparent;
-    border-radius: 5px;
-    transition: border-color 0.3s;
-}
-.food-option img, .movie-option img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-.food-option.selected, .movie-option.selected {
-    border-color: #4CAF50;
-}
-.slider-container {
-    width: 100%;
-    margin-top: 1rem;
-}
-#excitementSlider {
-    width: 100%;
-}
+
+setInterval(addFloatingHearts, 300);
