@@ -3,63 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Date App</title>
+    <title>Date Invitation</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container" class="page">
-        <h1 id="question">Would you like to go out with me for a date?</h1>
-        <button id="yesButton">Yes</button>
-        <button id="noButton">No</button>
-    </div>
-
-    <div id="happyCat" class="page hidden">
-        <img src="happy-cat.png" alt="Happy Cat" id="catImage">
-        <h2>YEAYYY</h2>
-        <button id="clickMe">Click Me!</button>
-    </div>
-
-    <div id="dateTime" class="page hidden">
-        <h1>When are you free?</h1>
-        <input type="date" id="datePicker">
-        <input type="time" id="timePicker">
-        <button id="continueDate">Continue</button>
-    </div>
-
-    <div id="foodChoice" class="page hidden">
-        <h1>What food do you want to eat?</h1>
-        <div class="food-options">
-            <img src="pancake.jpg" alt="Pancake" class="food-image" data-value="Pancake">
-            <img src="fried-rice.jpg" alt="Fried Rice" class="food-image" data-value="Fried Rice">
-            <img src="sushi.jpg" alt="Sushi" class="food-image" data-value="Sushi">
-            <img src="steak.jpg" alt="Steak" class="food-image" data-value="Steak">
-            <img src="burger.jpg" alt="Burger" class="food-image" data-value="Burger">
+    <div class="container">
+        <div id="page1">
+            <h1>Would you like to go out with me for a date?</h1>
+            <button onclick="showPage('page2')">Yes</button>
+            <button onclick="showNoAnimation()">No</button>
         </div>
-        <button id="continueFood">Continue</button>
-    </div>
-
-    <div id="movieChoice" class="page hidden">
-        <h1>What movie do you want to watch?</h1>
-        <div class="movie-options">
-            <img src="horror.jpg" alt="Horror" class="movie-image" data-value="Horror">
-            <img src="action.jpg" alt="Action" class="movie-image" data-value="Action">
-            <img src="romance.jpg" alt="Romance" class="movie-image" data-value="Romance">
-            <img src="comedy.jpg" alt="Comedy" class="movie-image" data-value="Comedy">
-            <img src="sci-fi.jpg" alt="Sci-Fi" class="movie-image" data-value="Sci-Fi">
+        <div id="page2" class="hidden">
+            <img src="images/cat.jpg" alt="Happy Cat" />
+            <h1>YEAYYY!</h1>
+            <button onclick="showPage('page3')">Click me</button>
         </div>
-        <button id="continueMovie">Continue</button>
+        <div id="page3" class="hidden">
+            <h1>When are you free?</h1>
+            <input type="date" id="dateInput">
+            <input type="time" id="timeInput">
+            <button onclick="showPage('page4')">Continue</button>
+        </div>
+        <div id="page4" class="hidden">
+            <h1>What food do you want to eat?</h1>
+            <div class="food-options">
+                <div class="food-option" onclick="selectFood(this, 'Pancake')">
+                    <img src="images/pancake.jpg" alt="Pancake" />
+                    <p>Pancake</p>
+                </div>
+                <div class="food-option" onclick="selectFood(this, 'Fried Rice')">
+                    <img src="images/fried-rice.jpg" alt="Fried Rice" />
+                    <p>Fried Rice</p>
+                </div>
+                <div class="food-option" onclick="selectFood(this, 'Sushi')">
+                    <img src="images/sushi.jpg" alt="Sushi" />
+                    <p>Sushi</p>
+                </div>
+                <div class="food-option" onclick="selectFood(this, 'Steak')">
+                    <img src="images/steak.jpg" alt="Steak" />
+                    <p>Steak</p>
+                </div>
+                <div class="food-option" onclick="selectFood(this, 'Burger')">
+                    <img src="images/burger.jpg" alt="Burger" />
+                    <p>Burger</p>
+                </div>
+            </div>
+            <button onclick="showPage('page5')">Continue</button>
+        </div>
+        <div id="page5" class="hidden">
+            <h1>What movie do you want to watch?</h1>
+            <div class="movie-options">
+                <div class="movie-option" onclick="selectMovie(this, 'Horror')">
+                    <img src="images/horror.jpg" alt="Horror" />
+                    <p>Horror</p>
+                </div>
+                <div class="movie-option" onclick="selectMovie(this, 'Action')">
+                    <img src="images/action.jpg" alt="Action" />
+                    <p>Action</p>
+                </div>
+                <div class="movie-option" onclick="selectMovie(this, 'Romance')">
+                    <img src="images/romance.jpg" alt="Romance" />
+                    <p>Romance</p>
+                </div>
+                <div class="movie-option" onclick="selectMovie(this, 'Comedy')">
+                    <img src="images/comedy.jpg" alt="Comedy" />
+                    <p>Comedy</p>
+                </div>
+                <div class="movie-option" onclick="selectMovie(this, 'Sci-Fi')">
+                    <img src="images/sci-fi.jpg" alt="Sci-Fi" />
+                    <p>Sci-Fi</p>
+                </div>
+            </div>
+            <button onclick="showPage('page6')">Continue</button>
+        </div>
+        <div id="page6" class="hidden">
+            <h1>Rate how excited you are</h1>
+            <div class="slider-container">
+                <input type="range" min="1" max="100" value="50" class="slider" id="excitementSlider">
+            </div>
+            <button onclick="showPage('page7')">Continue</button>
+        </div>
+        <div id="page7" class="hidden">
+            <h1>See you soon!</h1>
+            <p id="dateTimeDisplay"></p>
+        </div>
     </div>
-
-    <div id="excitement" class="page hidden">
-        <h1>Rate how excited you are</h1>
-        <input type="range" min="1" max="10" id="excitementLevel">
-        <button id="continueExcitement">Continue</button>
-    </div>
-
-    <div id="finalMessage" class="page hidden">
-        <h1>See you soon at <span id="finalDate"></span></h1>
-    </div>
-
     <script src="script.js"></script>
 </body>
 </html>
