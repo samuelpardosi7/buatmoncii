@@ -1,67 +1,86 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    flex-direction: column;
+    margin: 0;
+    background-color: #f0f0f0;
+    transition: background-color 0.5s;
 }
-
-.page {
+.container {
     background-color: white;
-    border: 1px solid #ccc;
+    padding: 2rem;
     border-radius: 10px;
-    padding: 20px;
-    margin: 20px;
-    width: 300px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: transform 0.2s;
+    max-width: 80%;
+    width: 400px;
 }
-
-.page.hidden {
+h1 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: #45a049;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+}
+.hidden {
     display: none;
 }
-
-.page:hover {
-    transform: scale(1.02);
+input[type="date"], input[type="time"] {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
 }
-
-h1, h2 {
-    color: #333;
-}
-
-button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 10px;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
 .food-options, .movie-options {
     display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1rem;
 }
-
-.food-image, .movie-image {
-    width: 60px;
-    height: 60px;
+.food-option, .movie-option {
+    width: 100px;
+    text-align: center;
     cursor: pointer;
+    padding: 10px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: border-color 0.3s;
 }
-
-.food-image:hover, .movie-image:hover {
-    transform: scale(1.1);
+.food-option img, .movie-option img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.food-option.selected, .movie-option.selected {
+    border-color: #4CAF50;
+}
+.slider-container {
+    width: 100%;
+    margin-top: 1rem;
+}
+#excitementSlider {
+    width: 100%;
 }
