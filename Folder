@@ -1,8 +1,0 @@
-dating-invitation/
-├── index.html           # File utama untuk halaman web
-├── styles/              # Folder untuk file CSS
-│   └── styles.css       # File CSS
-└── scripts/             # Folder untuk file JavaScript
-    └── script.js        # File JavaScript
-└── videos/              # Folder untuk video (jika ada)
-    └── happy-cat.mp4    # Video yang ingin Anda gunakan (jika ada)
