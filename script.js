@@ -5,6 +5,24 @@ let selectedMovie = '';
 let excitementLevel = 50; // Nilai default untuk slider
 
 function showPage(pageId) {
+    // Tambahkan logika untuk validasi sebelum melanjutkan ke page4
+    if (pageId === 'page4' && !selectedFood) {
+        alert('Please select a food option before continuing.');
+        return;
+    }
+    
+    // Tambahkan logika untuk validasi sebelum melanjutkan ke page5
+    if (pageId === 'page5' && !selectedMovie) {
+        alert('Please select a movie option before continuing.');
+        return;
+    }
+
+    // Tambahkan logika untuk validasi sebelum melanjutkan ke page7
+    if (pageId === 'page7' && (!selectedDate || !selectedTime)) {
+        alert('Please select a date and time before continuing.');
+        return;
+    }
+
     document.querySelectorAll('.container > div').forEach(div => div.classList.add('hidden'));
     const newPage = document.getElementById(pageId);
     newPage.classList.remove('hidden');
