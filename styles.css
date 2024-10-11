@@ -2,11 +2,12 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #f0f0f0;
     margin: 0;
-    padding: 20px;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    flex-direction: column;
 }
 
 .page {
@@ -19,6 +20,10 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.2s;
+}
+
+.page.hidden {
+    display: none;
 }
 
 .page:hover {
@@ -38,47 +43,25 @@ button {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-top: 10px;
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
-input[type="date"],
-input[type="time"],
-input[type="range"] {
-    width: calc(100% - 20px);
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+.food-options, .movie-options {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
 }
 
-input[type="range"] {
-    -webkit-appearance: none;
-    appearance: none;
-    height: 10px;
-    border-radius: 5px;
-    background: #007BFF;
-    outline: none;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #fff;
-    border: 2px solid #007BFF;
+.food-image, .movie-image {
+    width: 60px;
+    height: 60px;
     cursor: pointer;
 }
 
-input[type="range"]::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #fff;
-    border: 2px solid #007BFF;
-    cursor: pointer;
+.food-image:hover, .movie-image:hover {
+    transform: scale(1.1);
 }
