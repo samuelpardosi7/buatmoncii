@@ -3,60 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dating Invitation</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <title>Date Planner</title>
 </head>
 <body>
-    <div class="container" id="page1">
+    <div id="page1">
         <h1>Would you like to go out with me for a date?</h1>
         <button onclick="goToPage2('yes')">Yes</button>
         <button onclick="goToPage2('no')">No</button>
     </div>
-    <div class="container" id="page2" style="display: none;">
-        <h1>YEAYYY!</h1>
-        <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Happy cat gif" class="gif">
-        <br>
+
+    <div id="page2" style="display:none;">
+        <h2>Select Food</h2>
+        <button onclick="selectFood('Pizza')">Pizza</button>
+        <button onclick="selectFood('Sushi')">Sushi</button>
         <button onclick="goToPage3()">Next</button>
     </div>
-    <div class="container" id="page3" style="display: none;">
-        <h1>When are you free?</h1>
+
+    <div id="page3" style="display:none;">
+        <h2>Select Date and Time</h2>
         <input type="date" id="dateInput">
         <input type="time" id="timeInput">
-        <br>
-        <button onclick="goToPage4()">Continue</button>
+        <button onclick="goToPage4()">Next</button>
     </div>
-    <div class="container" id="page4" style="display: none;">
-        <h1>What food do you want to eat?</h1>
-        <div class="button-group">
-            <button onclick="selectFood('Pancake')">Pancake</button>
-            <button onclick="selectFood('Fried Rice')">Fried Rice</button>
-            <button onclick="selectFood('Sushi')">Sushi</button>
-            <button onclick="selectFood('Steak')">Steak</button>
-            <button onclick="selectFood('Burger')">Burger</button>
-        </div>
-        <p id="selectedFood"></p>
+
+    <div id="page4" style="display:none;">
+        <h2>Select Movie</h2>
+        <button onclick="selectMovie('Movie A')">Movie A</button>
+        <button onclick="selectMovie('Movie B')">Movie B</button>
     </div>
-    <div class="container" id="page5" style="display: none;">
-        <h1>What movie do you want to watch?</h1>
-        <div class="button-group">
-            <button onclick="selectMovie('Horror')">Horror</button>
-            <button onclick="selectMovie('Action')">Action</button>
-            <button onclick="selectMovie('Romance')">Romance</button>
-            <button onclick="selectMovie('Comedy')">Comedy</button>
-            <button onclick="selectMovie('Sci-Fi')">Sci-Fi</button>
-        </div>
-        <p id="selectedMovie"></p>
+
+    <div id="page5" style="display:none;">
+        <h2>Excitement Level</h2>
+        <input type="range" id="excitementLevel" min="1" max="10">
+        <span id="excitementValue">5</span>
+        <button onclick="showSummary()">Show Summary</button>
     </div>
-    <div class="container" id="page6" style="display: none;">
-        <h1>Rate how excited you are!</h1>
-        <input type="range" id="excitementLevel" min="0" max="10" value="5">
-        <p id="excitementValue">5</p>
-        <button onclick="showSummary()">Finish</button>
-    </div>
-    <div class="container" id="page7" style="display: none;">
-        <h1>It's a date!</h1>
+
+    <div id="page6" style="display:none;">
+        <h2>Summary</h2>
         <div id="summary"></div>
     </div>
+
     <script src="scripts/script.js"></script>
 </body>
 </html>
