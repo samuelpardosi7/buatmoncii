@@ -70,3 +70,19 @@ function addFloatingHearts() {
 }
 
 setInterval(addFloatingHearts, 300);
+
+function displayResults() {
+    const dateTimeDisplay = document.getElementById('dateTimeDisplay');
+    dateTimeDisplay.innerHTML = `
+        <h2>Summary of Your Date Plan:</h2>
+        <ul>
+            <li><strong>Date:</strong> ${selectedDate || 'Not selected yet'}</li>
+            <li><strong>Time:</strong> ${selectedTime || 'Not selected yet'}</li>
+            <li><strong>Food Choice:</strong> ${selectedFood || 'Not selected yet'}</li>
+            <li><strong>Movie Choice:</strong> ${selectedMovie || 'Not selected yet'}</li>
+            <li><strong>Excitement Level:</strong> ${excitementLevel}%</li>
+        </ul>
+        <p>We're excited for your date! Have a great time!</p>
+        <p><strong>Please screenshot this and send to me! :D</strong></p>
+    `;
+}
