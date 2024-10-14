@@ -68,7 +68,7 @@ function displayResults() {
             <li><strong>Movie Choice:</strong> ${selectedMovie || 'Not selected yet'}</li>
             <li><strong>Excitement Level:</strong> ${excitementLevel}%</li>
         </ul>
-        <p>We're excited for your date! Have a great time!</p>
+        <p>Making memories one date at a time 💑</p>
         <p><strong>Please screenshot this and send to me! :D</strong></p>
     `;
 }
